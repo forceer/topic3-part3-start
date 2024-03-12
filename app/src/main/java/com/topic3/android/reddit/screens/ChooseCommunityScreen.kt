@@ -30,7 +30,15 @@ fun SearchedCommunities(
     viewModel: MainViewModel?,
     modifier: Modifier = Modifier
 ) {
-    //TODO Add your code here
+    communities.forEach{ Community(
+        text = it,
+        modifier = modifier,
+        onCommunityClicked = {
+            viewModel?.selectedCommunity?.postValue(it)
+            RedditRouter.goBack()
+        }
+    )
+    }
 }
 
 @Composable
